@@ -78,13 +78,16 @@ class UserAPI:
             uid = body.get('uid') # get the UID (Know what to reference)
             timesplayed = body.get('timesplayed')
             users = User.query.all()
+            for i in users:
+                print(i)
             for user in users:
                 print(user, uid, user.uid)
                 if str(user.uid) == str(uid):
+                    print('success')
                     user.update(uid, timesplayed)
-                    break
-                else:
-                    return {'message': f'User Does Not Exist'}, 404
+                    # break
+                # else:
+                #     return {'message': f'User Does Not Exist'}, 404
             return f"{user.read()} Updated"
          
     class _Security(Resource):
