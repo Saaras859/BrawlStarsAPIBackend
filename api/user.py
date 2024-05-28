@@ -72,6 +72,20 @@ class UserAPI:
             user.delete() 
             # 204 is the status code for delete with no json response
             return f"Deleted user: {json}", 204 # use 200 to test with Postman
+
+        def put(self):
+            body = request.get_json() # get the body of the request
+            uid = body.get('uid') # get the UID (Know what to reference)
+            timesplayed = body.get('timesplayed')
+            users = User.query.all()
+            for user in users:
+                print(user, uid, user.uid)
+                if str(user.uid) == str(uid):
+                    user.update(uid, timesplayed)
+                    break
+                else:
+                    return {'message': f'User Does Not Exist'}, 404
+            return f"{user.read()} Updated"
          
     class _Security(Resource):
         def post(self):
