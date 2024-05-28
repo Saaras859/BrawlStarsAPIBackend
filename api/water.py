@@ -37,4 +37,4 @@ def predict_water_potability():
 app.register_blueprint(water_api, url_prefix='/water')  # Register the water_api Blueprint with the Flask application
 
 if __name__ == '__main__':
-    app.run(port=8086)  # Adjust port as needed
+    app.run(port=8073)  # Adjust port as needed
