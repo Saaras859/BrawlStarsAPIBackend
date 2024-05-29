@@ -10,8 +10,6 @@ from __init__ import app, db, cors  # Definitions initialization
 
 
 # setup APIs
-from api.covid import covid_api # Blueprint import api definition
-from api.joke import joke_api # Blueprint import api definition
 from api.user import user_api # Blueprint import api definition
 
 
@@ -25,8 +23,6 @@ from model.players import initPlayers
 db.init_app(app)
 
 # register URIs
-app.register_blueprint(joke_api) # register api routes
-app.register_blueprint(covid_api) # register api routes
 app.register_blueprint(user_api) # register api routes
 
 @app.errorhandler(404)  # catch for URL not found
