@@ -3,7 +3,7 @@ from flask import Blueprint, request, jsonify, current_app, Response
 from flask_restful import Api, Resource # used for REST API building
 from datetime import datetime
 from auth_middleware import token_required
-
+from flask_cors import CORS
 from model.users import User
 
 user_api = Blueprint('user_api', __name__,
@@ -11,7 +11,7 @@ user_api = Blueprint('user_api', __name__,
 
 # API docs https://flask-restful.readthedocs.io/en/latest/api.html
 api = Api(user_api)
-
+CORS(api)
 class UserAPI:        
     class _CRUD(Resource):  # User API operation for Create, Read.  THe Update, Delete methods need to be implemeented
         def post(self): # Create method
